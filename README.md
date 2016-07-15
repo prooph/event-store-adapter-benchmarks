@@ -14,12 +14,20 @@ and [doctrine-adapter](https://github.com/prooph/event-store-doctrine-adapter) (
 
 You can install prooph/event-store-adapter-benchmarks via cloning this repository and calling `composer install`.
 
-## Benchmark Results
+## Benchmark results using PHP 7
+
+Times in seconds
+
+| Driver | Batch size: 1 | Batch size: 5 | Batch size: 10 | Batch Size 100 |
+| :---   |      :---:    |      :---:    |      :---:     |     :---:      |
+| doctrine-adapter (mysql) | 0.0667 | 0.1391 | 0.2365 | 1.6130 |
+| doctrine-adapter (postgres) | 0.0185 | 0.0246 | 0.0250 | 0.0567 |
+| mongodb-adapter | 0.0025 | 0.0021 | 0.0025 | 0.0116 |
 
 ## Support
 
 - Ask questions on [prooph-users](https://groups.google.com/forum/?hl=de#!forum/prooph) mailing list.
-- File issues at [https://github.com/prooph/event-store/issues](https://github.com/prooph/event-store/issues).
+- File issues at [https://github.com/prooph/event-store-adapter-benchmarks/issues](https://github.com/prooph/event-store-adapter-benchmarks/issues).
 - Say hello in the [prooph gitter](https://gitter.im/prooph/improoph) chat.
 
 ## Contribute

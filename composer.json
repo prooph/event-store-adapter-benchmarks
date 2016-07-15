@@ -29,12 +29,12 @@
         "prooph/event-store": "^6.3",
         "prooph/event-store-doctrine-adapter": "^3.2.1",
         "prooph/event-store-mongodb-adapter": "^2.3.0",
-        "phpunit/phpunit": "^4.8 || ^5.4",
         "friendsofphp/php-cs-fixer": "^1.11.5"
     },
     "autoload": {
         "psr-4": {
-            "Prooph\\EventStore\\Benchmarks\\": "tests"
+            "Prooph\\EventStore\\AdapterBenchmarks\\": "src",
+            "ProophTest\\EventStore\\": "vendor/prooph/event-store/tests"
         }
     },
     "provide": {

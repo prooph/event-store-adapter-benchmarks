@@ -5,6 +5,11 @@ php:
   - 5.6
   - 7
 
+services:
+  - mysql
+  - mongodb
+  - postgresql
+
 env:
   matrix:
     - DEPENDENCIES=""
@@ -13,9 +18,10 @@ env:
 before_script:
   - composer self-update
   - composer update --prefer-dist $DEPENDENCIES
+  - psql -c 'create database event_store_adapter_benchmarks;' -U postgres
 
 script:
-  - php ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
+  - php ./bin/run_benchmark.php
   - ./vendor/bin/php-cs-fixer fix -v --diff --dry-run
 
 notifications:
