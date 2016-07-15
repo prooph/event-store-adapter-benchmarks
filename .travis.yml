@@ -7,7 +7,6 @@ php:
 
 services:
   - mysql
-  - mongodb
   - postgresql
 
 env:
@@ -15,10 +14,18 @@ env:
     - DEPENDENCIES=""
     - DEPENDENCIES="--prefer-lowest --prefer-stable"
 
+before_install:
+  - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.5.tgz -O /tmp/mongodb.tgz
+  - tar -xvf /tmp/mongodb.tgz
+  - mkdir /tmp/data
+  - ${PWD}/mongodb-linux-x86_64-3.0.5/bin/mongod --dbpath /tmp/data --bind_ip 127.0.0.1 --noauth &> /dev/null &
+
 before_script:
+  - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer self-update
   - composer update --prefer-dist $DEPENDENCIES
   - psql -c 'create database event_store_adapter_benchmarks;' -U postgres
+  - mysql -e 'create database event_store_adapter_benchmarks;'
 
 script:
   - php ./bin/run_benchmark.php
