@@ -1,0 +1,43 @@
+{
+    "name": "prooph/event-store-adapter-benchmarks",
+    "description": "Benchmarks for various prooph event store adapters",
+    "license": "BSD-3-Clause",
+    "homepage": "http://getprooph.org/",
+    "authors": [
+        {
+            "name": "Alexander Miertsch",
+            "email": "contact@prooph.de",
+            "homepage": "http://www.prooph.de"
+        },
+        {
+            "name": "Sascha-Oliver Prolic",
+            "email": "saschaprolic@googlemail.com"
+        }
+    ],
+    "keywords": [
+        "EventStore",
+        "EventSourcing",
+        "DDD",
+        "prooph",
+        "benchmark"
+    ],
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "alcaeus/mongo-php-adapter": "^1.0.5",
+        "beberlei/assert": "~2.5.1",
+        "doctrine/common": "^2.6",
+        "prooph/event-store": "^6.3",
+        "prooph/event-store-doctrine-adapter": "^3.2.1",
+        "prooph/event-store-mongodb-adapter": "^2.3.0",
+        "phpunit/phpunit": "^4.8 || ^5.4",
+        "friendsofphp/php-cs-fixer": "^1.11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Prooph\\EventStore\\Benchmarks\\": "tests"
+        }
+    },
+    "provide": {
+        "ext-mongo": "1.6.13"
+    }
+}
