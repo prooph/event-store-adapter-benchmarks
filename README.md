@@ -13,6 +13,7 @@ and [doctrine-adapter](https://github.com/prooph/event-store-doctrine-adapter) (
 ## Installation
 
 You can install prooph/event-store-adapter-benchmarks via cloning this repository and calling `composer install`.
+If you are running PHP 7, run this command afterwards: `composer require alcaeus/mongo-php-adapter ^1.0`.
 
 ## Benchmark results using PHP 7
 
