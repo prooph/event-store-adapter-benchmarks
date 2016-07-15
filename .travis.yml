@@ -22,7 +22,7 @@ before_install:
 
 before_script:
   - if [ $TRAVIS_PHP_VERSION != "7" ]; then echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;
-  - if [ $TRAVIS_PHP_VERSION == "7" ]; then echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;
+  - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer self-update
   - composer update --prefer-dist $DEPENDENCIES
   - psql -c 'create database event_store_adapter_benchmarks;' -U postgres
