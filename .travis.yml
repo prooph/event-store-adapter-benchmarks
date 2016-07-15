@@ -22,9 +22,10 @@ before_install:
 
 before_script:
   - if [ $TRAVIS_PHP_VERSION != "7" ]; then echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;
-  - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - if [ $TRAVIS_PHP_VERSION == "7" ]; then echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;
   - composer self-update
   - composer update --prefer-dist $DEPENDENCIES
+  - if [ $TRAVIS_PHP_VERSION == "7" ]; then composer require alcaeus/mongo-php-adapter ^1.0; fi;
   - psql -c 'create database event_store_adapter_benchmarks;' -U postgres
   - mysql -e 'create database event_store_adapter_benchmarks;'
 

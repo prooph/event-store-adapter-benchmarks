@@ -23,9 +23,6 @@
     ],
     "require": {
         "php": "^5.5 || ^7.0",
-        "alcaeus/mongo-php-adapter": "^1.0.5",
-        "beberlei/assert": "~2.5.1",
-        "doctrine/common": "^2.6",
         "prooph/event-store": "^6.3",
         "prooph/event-store-doctrine-adapter": "^3.2.1",
         "prooph/event-store-mongodb-adapter": "^2.3.0",
