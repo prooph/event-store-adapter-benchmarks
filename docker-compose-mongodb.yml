@@ -1,0 +1,11 @@
+version: '2'
+services:
+  php:
+    environment:
+      - MONGODB_HOST=mongodb
+      - BENCHMARK_CASE=mongodb
+
+  mongodb:
+      image: mongo
+      ports:
+        - 27017:27017

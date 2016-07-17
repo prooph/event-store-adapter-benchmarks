@@ -1,0 +1,16 @@
+version: '2'
+services:
+  php:
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PASSWORD=dev
+      - BENCHMARK_CASE=postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=event_store_adapter_benchmarks

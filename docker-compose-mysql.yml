@@ -1,0 +1,17 @@
+version: '2'
+services:
+  php:
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_ROOT_PASSWORD=dev
+      - BENCHMARK_CASE=mysql
+
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=dev
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=dev
+      - MYSQL_DATABASE=event_store_adapter_benchmarks

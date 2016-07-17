@@ -1,0 +1,7 @@
+version: '2'
+services:
+  php:
+    image: prooph/php:7.0-cli
+    volumes:
+      - .:/app:rw
+    command: ["php", "bin/run_benchmark.php"]
