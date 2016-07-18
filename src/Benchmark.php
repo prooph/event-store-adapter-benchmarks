@@ -76,7 +76,7 @@ class Benchmark
                 );
                 break;
             case 'mongodb':
-                $connection = new \MongoClient();
+                $connection = new \MongoClient($data['options']['server']);
                 $connection->selectDB('event_store_adapter_benchmarks')->selectCollection('user_stream')->drop();
                 $adapter = new MongoDbEventStoreAdapter(
                     new FQCNMessageFactory(),
