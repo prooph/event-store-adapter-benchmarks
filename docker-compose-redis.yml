@@ -1,0 +1,12 @@
+version: '2'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile-redis
+    environment:
+      - REDIS_HOST=redis
+      - BENCHMARK_CASE=redis
+
+  redis:
+      image: redis
