@@ -87,7 +87,7 @@ class Benchmark
                     $data['options']['db_name']
                 );
                 break;
-            case 'predis':
+            case 'redis':
                 $connection = new PredisClient($data['options']['server']);
                 $adapter = new PredisEventStoreAdapter(
                     $connection,

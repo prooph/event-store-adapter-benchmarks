@@ -58,7 +58,7 @@ $configs = [
         'batchSizes' => $batchSizes
     ],
     'redis' => [
-        'adapter' => 'predis',
+        'adapter' => 'redis',
         'options' => [
             'server' => 'tcp://' . (getenv('REDIS_HOST') ?: '127.0.0.1') . ':6379',
         ],
