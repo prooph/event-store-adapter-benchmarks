@@ -60,6 +60,11 @@ $ export COMPOSE_FILE=docker-compose.yml:docker-compose-percona.yml && docker-co
 $ export COMPOSE_FILE=docker-compose.yml:docker-compose-postgresql.yml && docker-compose up -d && docker-compose logs -f php && docker-compose down
 ```
 
+### For Redis
+```
+$ export COMPOSE_FILE=docker-compose.yml:docker-compose-redis.yml && docker-compose up -d && docker-compose logs -f php && docker-compose down
+```
+
 ## Support
 
 - Ask questions on [prooph-users](https://groups.google.com/forum/?hl=de#!forum/prooph) mailing list.
