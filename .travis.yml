@@ -29,6 +29,7 @@ before_script:
   - if [ $TRAVIS_PHP_VERSION == "7" ]; then composer require alcaeus/mongo-php-adapter ^1.0; fi;
   - psql -c 'create database event_store_adapter_benchmarks;' -U postgres
   - mysql -e 'create database event_store_adapter_benchmarks;'
+  - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script:
   - php ./bin/run_benchmark.php
