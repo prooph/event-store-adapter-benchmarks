@@ -12,8 +12,8 @@ services:
 
 env:
   matrix:
-    - DEPENDENCIES=""
-    - DEPENDENCIES="--prefer-lowest --prefer-stable"
+    - DEPENDENCIES="--prefer-source"
+    - DEPENDENCIES="--prefer-lowest --prefer-source"
 
 before_install:
   - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.5.tgz -O /tmp/mongodb.tgz
@@ -25,7 +25,7 @@ before_script:
   - if [ $TRAVIS_PHP_VERSION != "7" ]; then echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;
   - if [ $TRAVIS_PHP_VERSION == "7" ]; then echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;
   - composer self-update
-  - composer update --prefer-dist $DEPENDENCIES
+  - composer update $DEPENDENCIES
   - if [ $TRAVIS_PHP_VERSION == "7" ]; then composer require alcaeus/mongo-php-adapter ^1.0; fi;
   - psql -c 'create database event_store_adapter_benchmarks;' -U postgres
   - mysql -e 'create database event_store_adapter_benchmarks;'
