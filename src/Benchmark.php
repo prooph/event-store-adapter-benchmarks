@@ -12,12 +12,14 @@ namespace Prooph\EventStore\AdapterBenchmarks;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
+use Predis\Client as PredisClient;
 use Prooph\Common\Event\ProophActionEventEmitter;
 use Prooph\Common\Messaging\FQCNMessageFactory;
 use Prooph\Common\Messaging\NoOpMessageConverter;
 use Prooph\EventStore\Adapter\Doctrine\DoctrineEventStoreAdapter;
 use Prooph\EventStore\Adapter\MongoDb\MongoDbEventStoreAdapter;
 use Prooph\EventStore\Adapter\PayloadSerializer\JsonPayloadSerializer;
+use Prooph\EventStore\Adapter\Predis\PredisEventStoreAdapter;
 use Prooph\EventStore\EventStore;
 use Prooph\EventStore\Stream\Stream;
 use Prooph\EventStore\Stream\StreamName;
@@ -85,6 +87,15 @@ class Benchmark
                     $data['options']['db_name']
                 );
                 break;
+            case 'redis':
+                $connection = new PredisClient($data['options']['server']);
+                $adapter = new PredisEventStoreAdapter(
+                    $connection,
+                    new FQCNMessageFactory(),
+                    new NoOpMessageConverter(),
+                    new JsonPayloadSerializer()
+                );
+                break;
             default:
                 throw new \InvalidArgumentException('invalid adapter given');
                 break;
@@ -126,10 +137,16 @@ class Benchmark
 
                 $end = microtime(true);
 
-                if ($connection instanceof Connection) {
-                    $connection->executeQuery('DROP TABLE IF EXISTS user_stream');
-                } else {
-                    $connection->selectDB('event_store_adapter_benchmarks')->selectCollection('user_stream')->drop();
+                switch (true) {
+                    case $connection instanceof Connection:
+                        $connection->executeQuery('DROP TABLE IF EXISTS user_stream');
+                        break;
+                    case $connection instanceof \MongoClient:
+                        $connection->selectDB('event_store_adapter_benchmarks')->selectCollection('user_stream')->drop();
+                        break;
+                    case $connection instanceof PredisClient:
+                        $connection->flushall();
+                        break;
                 }
 
                 $diff = $end - $start;

@@ -1,0 +1,9 @@
+version: '2'
+services:
+  php:
+    environment:
+      - REDIS_HOST=redis
+      - BENCHMARK_CASE=redis
+
+  redis:
+      image: redis

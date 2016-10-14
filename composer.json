@@ -23,9 +23,10 @@
     ],
     "require": {
         "php": "^5.5 || ^7.0",
-        "prooph/event-store": "^6.3",
+        "prooph/event-store": "^6.4",
         "prooph/event-store-doctrine-adapter": "^3.2.1",
         "prooph/event-store-mongodb-adapter": "^2.3.0",
+        "prooph/event-store-redis-adapter": "^0.0.3",
         "friendsofphp/php-cs-fixer": "^1.11.5"
     },
     "autoload": {
