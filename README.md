@@ -37,27 +37,27 @@ by one of the following commands. PHP 7 is used, but you are free to change the
 `docker run --rm -it --volume $(pwd):/app prooph/composer:7.0 require alcaeus/mongo-php-adapter`.
 
 ```
-$ export COMPOSE_FILE=docker-compose.yml:docker-compose-mongodb.yml && docker-compose up -d && docker-compose logs -f php && docker-compose down
+$ (export COMPOSE_FILE=docker-compose.yml:docker-compose-mongodb.yml; docker-compose run php && docker-compose down)
 ```
 
 ### For MariaDB (MySQL)
 ```
-$ export COMPOSE_FILE=docker-compose.yml:docker-compose-mariadb.yml && docker-compose up -d && docker-compose logs -f php && docker-compose down
+$ (export COMPOSE_FILE=docker-compose.yml:docker-compose-mariadb.yml; docker-compose run php && docker-compose down)
 ```
 
 ### For MySQL
 ```
-$ export COMPOSE_FILE=docker-compose.yml:docker-compose-mysql.yml && docker-compose up -d && docker-compose logs -f php && docker-compose down
+$ (export COMPOSE_FILE=docker-compose.yml:docker-compose-mysql.yml; docker-compose run php && docker-compose down)
 ```
 
 ### For Percona (MySQL)
 ```
-$ export COMPOSE_FILE=docker-compose.yml:docker-compose-percona.yml && docker-compose up -d && docker-compose logs -f php && docker-compose down
+$ (export COMPOSE_FILE=docker-compose.yml:docker-compose-percona.yml; docker-compose run php && docker-compose down)
 ```
 
 ### For PostgreSQL
 ```
-$ export COMPOSE_FILE=docker-compose.yml:docker-compose-postgresql.yml && docker-compose up -d && docker-compose logs -f php && docker-compose down
+$ (export COMPOSE_FILE=docker-compose.yml:docker-compose-postgresql.yml; docker-compose run php && docker-compose down)
 ```
 
 ## Support

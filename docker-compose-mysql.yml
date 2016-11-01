@@ -1,6 +1,8 @@
 version: '2'
 services:
   php:
+    depends_on:
+      - mysql
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_ROOT_PASSWORD=dev
@@ -8,8 +10,6 @@ services:
 
   mysql:
     image: mysql
-    ports:
-      - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=dev
       - MYSQL_USER=dev
