@@ -1,6 +1,8 @@
 version: '2'
 services:
   php:
+    depends_on:
+      - postgres
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_PASSWORD=dev

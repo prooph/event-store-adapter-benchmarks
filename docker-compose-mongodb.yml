@@ -1,6 +1,8 @@
 version: '2'
 services:
   php:
+    depends_on:
+      - mongodb
     environment:
       - MONGODB_HOST=mongodb
       - BENCHMARK_CASE=mongodb

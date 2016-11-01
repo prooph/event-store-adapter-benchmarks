@@ -1,6 +1,8 @@
 version: '2'
 services:
   php:
+    depends_on:
+      - mariadb
     environment:
       - MYSQL_HOST=mariadb
       - MYSQL_ROOT_PASSWORD=dev
